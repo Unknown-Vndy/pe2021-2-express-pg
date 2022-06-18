@@ -1,14 +1,12 @@
 const { Router } = require('express');
+const phonesRouter = require('./routes/phonesRouter');
+const usersRouter = require('./routes/usersRouter');
 
 const router = Router();
 
-// '/api/phones'
-router.get('/phones');
-
+router.use('/phones', phonesRouter);
+// Вынести в usersRouter
 // '/api/users'
-router.post('/users');
-router.patch('/users/:userId');
-router.delete('/users/:userId');
-router.get('/users/:userId/phones');
+router.use('/users', usersRouter);
 
 module.exports = router;
