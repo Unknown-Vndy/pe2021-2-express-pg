@@ -1,19 +1,19 @@
 const { User } = require('./../models');
 
-module.exports.createUser = async (req, res) => {
+module.exports.createUser = async (req, res, next) => {
   const { body } = req;
 
   try {
     const newUser = await User.create(body);
     res.status(201).send({ newUser });
   } catch (err) {
-    res.status(500).send('Something went wrong');
+    next(err);
   }
 };
 
 module.exports.updateUser = async (req, res) => {};
 
-module.exports.deleteUser = async (req, res) => {
+module.exports.deleteUser = async (req, res, next) => {
   const { userId } = req.params;
 
   try {
@@ -23,7 +23,7 @@ module.exports.deleteUser = async (req, res) => {
     }
     res.status(404).send('User Not Found');
   } catch (err) {
-    res.status(500).send('Something went wrong');
+    next(err);
   }
 };
 module.exports.getUsersPhones = async (req, res) => {};
