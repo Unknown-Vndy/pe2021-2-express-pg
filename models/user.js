@@ -19,7 +19,22 @@ class User {
     }
   }
   static update () {}
-  static delete () {}
+  static async delete (id) {
+    const deleteQuery = `
+      DELETE FROM users
+      WHERE id=${id} 
+      RETURNING id;
+    `;
+
+    try {
+      const {
+        rows: [deletedUser],
+      } = await User.pool.query(deleteQuery);
+      return deletedUser;
+    } catch (err) {
+      throw new Error(err.detail);
+    }
+  }
   static getUsersPhones () {}
 }
 

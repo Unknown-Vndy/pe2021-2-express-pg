@@ -8,7 +8,7 @@ usersRouter.post('/', userController.createUser);
 usersRouter
   .route('/:userId')
   .patch((req, res) => {})
-  .delete((req, res) => {});
+  .delete(userController.deleteUser);
 
 usersRouter.get('/:userId/phones');
 
