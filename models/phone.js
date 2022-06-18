@@ -1,8 +1,9 @@
 class Phone {
-  static async getPhones () {
+  static async getPhones ({ pagination: { limit, offset } }) {
     const selectQuery = `
       SELECT *
-      FROM PHONES;
+      FROM PHONES
+      LIMIT ${limit} OFFSET ${offset};
     `;
 
     try {
