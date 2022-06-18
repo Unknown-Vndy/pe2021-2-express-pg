@@ -1,5 +1,6 @@
 const { Pool } = require('pg');
 const User = require('./user');
+const Phone = require('./phone');
 
 const dbConfig = {
   user: 'postgres',
@@ -22,14 +23,6 @@ process.on('beforeExit', () => {
 });
 
 User.pool = pool;
+Phone.pool = pool;
 
-// User.create({
-//   firstName: 'fn',
-//   lastName: 'ln',
-//   email: 'test@test',
-//   tel: '+380123856789',
-// })
-//   .then(data => console.log('data', data))
-//   .catch(err => console.log('err', err));
-
-module.exports = { User };
+module.exports = { User, Phone };

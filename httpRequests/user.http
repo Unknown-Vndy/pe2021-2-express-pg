@@ -25,3 +25,6 @@ DELETE http://localhost:5000/api/users/11 HTTP/1.1
 
 ### delete 404
 DELETE http://localhost:5000/api/users/110 HTTP/1.1
+
+### get 200
+GET http://localhost:5000/api/phones HTTP/1.1
