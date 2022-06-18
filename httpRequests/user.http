@@ -1,0 +1,21 @@
+### post 201
+POST http://localhost:5000/api/users
+Content-Type: application/json
+
+{
+  "firstName": "fn1",
+  "lastName": "ln1",
+  "email": "test@test",
+  "tel": "+380123456987"
+}
+
+### post 500
+POST http://localhost:5000/api/users
+Content-Type: application/json
+
+{
+  "firstName": "fn1",
+  "lastName": "ln1",
+  "email": "test@test",
+  "tel": "+380123456987"
+}

@@ -8,8 +8,6 @@ class User {
       RETURNING *;
     `;
 
-    console.log('insertQuery', insertQuery);
-
     try {
       const {
         rows: [user],
@@ -17,7 +15,7 @@ class User {
 
       return user;
     } catch (err) {
-      console.log('err', err);
+      throw new Error(err.detail);
     }
   }
   static update () {}

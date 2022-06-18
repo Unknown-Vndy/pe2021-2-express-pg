@@ -1,8 +1,9 @@
 const { Router } = require('express');
+const { userController } = require('../controllers');
 
 const usersRouter = Router();
 
-usersRouter.post('/');
+usersRouter.post('/', userController.createUser);
 
 usersRouter
   .route('/:userId')
