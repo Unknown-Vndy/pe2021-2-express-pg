@@ -1,5 +1,21 @@
 const { User } = require('./../models');
 
+module.exports.getUser = async (req, res, next) => {
+  const {
+    params: { userId },
+  } = req;
+
+  try {
+    const user = await User.get(userId);
+    if (user) {
+      res.status(201).send({ user });
+    }
+    res.status(404).send('user not found');
+  } catch (err) {
+    next(err);
+  }
+};
+
 module.exports.createUser = async (req, res, next) => {
   const { body } = req;
 
@@ -11,7 +27,23 @@ module.exports.createUser = async (req, res, next) => {
   }
 };
 
-module.exports.updateUser = async (req, res) => {};
+module.exports.updateUser = async (req, res, next) => {
+  const {
+    params: { userId },
+    body,
+  } = req;
+
+  try {
+    const updatedUser = await User.update(userId, body);
+
+    if (updatedUser) {
+      return res.status(200).send(`user with id ${userId} modified`);
+    }
+    res.status(404).send('user not found');
+  } catch (error) {
+    next(error);
+  }
+};
 
 module.exports.deleteUser = async (req, res, next) => {
   const { userId } = req.params;

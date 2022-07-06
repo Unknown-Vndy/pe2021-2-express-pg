@@ -7,7 +7,8 @@ usersRouter.post('/', userController.createUser);
 
 usersRouter
   .route('/:userId')
-  .patch((req, res) => {})
+  .get(userController.getUser)
+  .patch(userController.updateUser)
   .delete(userController.deleteUser);
 
 usersRouter.get('/:userId/phones');

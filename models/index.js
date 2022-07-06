@@ -4,7 +4,7 @@ const Phone = require('./phone');
 
 const dbConfig = {
   user: 'postgres',
-  password: 'admin',
+  password: 'postgres',
   host: 'localhost',
   port: 5432,
   database: 'phones_sales',
